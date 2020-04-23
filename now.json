@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "name": "Seltec Home Panel",
+  "alias": "homepanel",
+  "builds": [{ "src": "package.json", "use": "@now/next" }]
+}
