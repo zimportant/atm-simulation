@@ -1,6 +1,5 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
-import { colorKey } from './constants';
 
 const colorOptions = [
   '#02ebc2',
@@ -40,7 +39,7 @@ function scaleWindow([sm, md, lg]) {
 
 function getTheme(paletteType, colorOptionId) {
   const fontScale = scaleWindow([1.6, 1.2, 1]);
-  let theme = createMuiTheme({
+  const theme = createMuiTheme({
     spacing: factor => scaleWindow([5, 7, 8]) * factor,
     typography: {
       fontSize: 16,

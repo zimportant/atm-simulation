@@ -2,14 +2,10 @@ import { Box, Tooltip } from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
 import { createStyles, Theme, useTheme, withTheme, withStyles } from '@material-ui/core/styles';
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import SvgIcon, { SvgIconProps } from '@material-ui/core/SvgIcon';
-import { createNewSitemap } from '../EventSubscription';
 import IndicatorDark from '../SVG/indicator_dark.svg';
 import IndicatorLight from '../SVG/indicator_light.svg';
-import { ItemsApi, ServicesApi, SitemapsApi, BASE_PATH } from '../../src/api';
-import { RootState } from '../../redux/reducers';
 
 export interface LightingState {
   widgetId: string;
@@ -144,8 +140,6 @@ const LightingSetting: React.FC<LightingState> = ({
   const theme = useTheme();
   const [tempProgress, setTempProgress] = useState(progress);
   const PrettoSlider = withStyles(prettoSliderStyle(theme))(Slider);
-  const { sitemap, sitemapSelected } = useSelector((state: RootState) => state.sitemap);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(progress, tempProgress);
@@ -166,8 +160,6 @@ const LightingSetting: React.FC<LightingState> = ({
       // );
       // console.log(newSitemap);
       // dispatch(newSitemap);
-
-      new ItemsApi().postItemCommand(widgetId, String(newValue));
     }, 200);
   };
 

@@ -4,7 +4,6 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
 import { getTheme } from '../src/theme';
 import { initializeFonts } from '../src/fonts';
-import { colorKey, paletteTypeKey } from '../src/constants';
 
 class MyDocument extends Document {
   constructor(props) {
@@ -14,10 +13,6 @@ class MyDocument extends Document {
 
   componentDidMount() {
     initializeFonts();
-
-    const colorOptionId = Number(localStorage.getItem(colorKey) ?? 0);
-    const paletteType = localStorage.getItem(paletteTypeKey) ?? 'dark';
-    this.setState({ paletteType, colorOptionId });
   }
 
   render() {
