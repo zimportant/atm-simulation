@@ -66,7 +66,12 @@ const RutTien2: React.FC<RutTien2Props> = ({ withdraw }: RutTien2Props) => {
               <BigButton
                 variant="contained"
                 color="secondary"
-                onClick={() => Router.push('/ruttien3')}
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.localStorage.setItem('MONEY', String(money));
+                  }
+                  Router.push('/ruttien3');
+                }}
               >
                 TIEP TUC
               </BigButton>
