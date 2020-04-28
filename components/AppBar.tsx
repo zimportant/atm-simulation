@@ -69,15 +69,6 @@ const AppBar: React.FC = () => {
         <Grid container item xs={9}>
           <NotificationContent>
             <>
-              <ClearBtn color="secondary" size="small" onClick={() => {}}>
-                <Typography
-                  variant="body2"
-                  component="span"
-                  style={{ color: theme.palette.text.primary, fontWeight: 500 }}
-                >
-                  Clear
-                </Typography>
-              </ClearBtn>
               <Typography
                 variant="body2"
                 component="span"
@@ -87,7 +78,7 @@ const AppBar: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-                Notifications and Alert Center
+                CHAO MUNG QUY KHACH SU DUNG ATM SIMULATION
               </Typography>
             </>
           </NotificationContent>

@@ -1,5 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Badge, Box, Grid } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import Badge from '@material-ui/core/Badge';
 import { createStyles, Theme, useTheme, withStyles, withTheme } from '@material-ui/core/styles';
 import AddIcon from '@material-ui/icons/Add';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
@@ -54,6 +57,11 @@ const RectBtnContainer = styled(Box)`
 const RectContainer = withTheme(styled(Box)`
   padding: ${({ theme }) => `${theme.spacing(14 / 8)}px ${theme.spacing(26 / 8)}px`};
   text-align: center;
+`);
+
+const BigButton = withTheme(styled(Button)`
+  min-width: 200px !important;
+  min-height: 60px;
 `);
 
 const RectContainerSmall = withTheme(styled(Box)`
@@ -309,5 +317,6 @@ export {
   RectButton,
   RectIconButtonSmall,
   StyledBadge,
-  Alert
+  Alert,
+  BigButton
 };

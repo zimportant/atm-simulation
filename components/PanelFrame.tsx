@@ -20,8 +20,6 @@ const PanelFrameContainer = styled(Box)`
 
 interface PanelFrameProps {
   children?: any;
-  selectedID: number;
-  showBottomBar?: boolean;
 }
 
 const PanelContent = styled(Box)`
@@ -31,16 +29,11 @@ const PanelContent = styled(Box)`
   overflow: hidden;
 `;
 
-const PanelFrame: NextPage<PanelFrameProps> = ({
-  children,
-  selectedID,
-  showBottomBar
-}: PanelFrameProps) => {
+const PanelFrame: NextPage<PanelFrameProps> = ({ children }: PanelFrameProps) => {
   return (
     <PanelFrameContainer>
       <AppBar />
       <PanelContent>{children}</PanelContent>
-      {showBottomBar === false ? null : <BottomBar selectedID={selectedID} />}
     </PanelFrameContainer>
   );
 };

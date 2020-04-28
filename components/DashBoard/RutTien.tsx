@@ -16,7 +16,7 @@ const DashBoardContainer = styled(Box)`
   flex-direction: column;
 `;
 
-const DashBoard: React.FC = () => {
+const RutTien: React.FC = () => {
   return (
     <DashBoardContainer>
       <Grid container justify="center" style={{ height: '100%' }}>
@@ -25,46 +25,55 @@ const DashBoard: React.FC = () => {
             <BigButton
               variant="contained"
               color="secondary"
-              onClick={() => Router.push('/ruttien')}
+              onClick={() => Router.push({ pathname: '/ruttien2', query: { withdraw: 100000 } })}
             >
-              RUT TIEN
+              100.000 VND
             </BigButton>
-            <BigButton variant="contained" color="secondary">
-              CHUYEN KHOAN
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push({ pathname: '/ruttien2', query: { withdraw: 200000 } })}
+            >
+              200.000 VND
             </BigButton>
-            <BigButton variant="contained" color="secondary">
-              DICH VU KHAC
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push({ pathname: '/ruttien2', query: { withdraw: 500000 } })}
+            >
+              500.000 VND
             </BigButton>
           </Box>
         </Grid>
         <Grid container item xs={6} justify="center">
           <Box display="flex" flexDirection="column" alignItems="center" justifyContent="start">
             <br />
-            <Typography component="h2">MENU</Typography>
+            <Typography component="h2">RUT TIEN</Typography>
             <br />
-            <Typography component="p">
-              He thong dich vu ATM simulation cung cap bao gom Rut Tien, Chuyen Khoan, Truy Van So
-              Du, Lich Su Giao Dich, Doi Ma Pin, va Dich Vu Khac.
-            </Typography>
-            <br />
-            <Typography component="p">
-              Quy khach vui long lua chon dich vu tren man hinh de tiep tuc.
-            </Typography>
+            <Typography component="p">Quy khach vui long nhap so tien can rut.</Typography>
           </Box>
         </Grid>
         <Grid container item xs={3} justify="center">
           <Box display="flex" flexDirection="column" justifyContent="space-evenly">
-            <BigButton variant="contained" color="secondary">
-              TRUY VAN SO DU
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push({ pathname: '/ruttien2', query: { withdraw: 1000000 } })}
+            >
+              1.000.000 VND
+            </BigButton>
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push({ pathname: '/ruttien2', query: { withdraw: 2000000 } })}
+            >
+              2.000.000 VND
             </BigButton>
             <BigButton variant="contained" color="secondary">
-              LICH SU GIAO DICH
+              NHAP SO TIEN
             </BigButton>
-            <BigButton variant="contained" color="secondary">
-              DOI MA PIN
-            </BigButton>
-            <BigButton variant="contained" color="secondary">
-              DANG XUAT
+            <BigButton variant="contained" color="secondary" onClick={() => Router.push('/')}>
+              HUY BO
             </BigButton>
           </Box>
         </Grid>
@@ -73,4 +82,4 @@ const DashBoard: React.FC = () => {
   );
 };
 
-export default DashBoard;
+export default RutTien;

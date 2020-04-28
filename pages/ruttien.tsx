@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
 import _ from 'lodash';
 import PanelFrame from '../components/PanelFrame';
-import DashBoard from '../components/DashBoard/DashBoard';
+import RutTien from '../components/DashBoard/RutTien';
 
 const App: NextPage = () => {
   return (
     <PanelFrame>
-      <DashBoard />
+      <RutTien />
     </PanelFrame>
   );
 };
