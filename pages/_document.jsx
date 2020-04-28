@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets } from '@material-ui/styles';
 import { getTheme } from '../src/theme';
 import { initializeFonts } from '../src/fonts';
@@ -46,11 +47,12 @@ class MyDocument extends Document {
 
 MyDocument.getInitialProps = async ctx => {
   const sheets = new ServerStyleSheets();
+  const sheet = new ServerStyleSheet();
   const originalRenderPage = ctx.renderPage;
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />)
+      enhanceApp: App => props => sheet.collectStyles(sheets.collect(<App {...props} />))
     });
 
   const initialProps = await Document.getInitialProps(ctx);
@@ -62,6 +64,7 @@ MyDocument.getInitialProps = async ctx => {
       <React.Fragment key="styles">
         {initialProps.styles}
         {sheets.getStyleElement()}
+        {sheet.getStyleElement()}
       </React.Fragment>
     ]
   };
