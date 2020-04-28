@@ -204,7 +204,7 @@ const AirConditionerWithFrame: React.FC<AirConditionerProps> = ({
 }: AirConditionerProps) => {
   const theme = useTheme();
   return (
-    <PanelFrame selectedID={0} showBottomBar={false}>
+    <PanelFrame>
       <TemperatureContainer>
         <Grid container direction="row" justify="space-between">
           <Grid container item xs={10}>
