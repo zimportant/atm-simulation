@@ -68,7 +68,7 @@ const RutTien2: React.FC<RutTien2Props> = ({ withdraw }: RutTien2Props) => {
                 color="secondary"
                 onClick={() => {
                   if (typeof window !== 'undefined') {
-                    window.localStorage.setItem('MONEY', String(money));
+                    window.localStorage.setItem('MONEY', String(money - withdraw));
                   }
                   Router.push('/ruttien3');
                 }}
