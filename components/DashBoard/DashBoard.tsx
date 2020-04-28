@@ -63,7 +63,16 @@ const DashBoard: React.FC = () => {
             <BigButton variant="contained" color="secondary">
               DOI MA PIN
             </BigButton>
-            <BigButton variant="contained" color="secondary">
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.localStorage.setItem('ISLOGIN', '');
+                  Router.push('/dangnhap');
+                }
+              }}
+            >
               DANG XUAT
             </BigButton>
           </Box>
