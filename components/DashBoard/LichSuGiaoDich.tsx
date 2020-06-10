@@ -12,8 +12,6 @@ import { transactionHistory, getUserId } from '../../src/api';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import { BANKING_BUDGET_ID } from '../../src/api';
 
 const DashBoardContainer = styled(Box)`
@@ -52,10 +50,10 @@ const LichSuGiaoDich: React.FC = () => {
               color="secondary"
               onClick={() => {
                 const input = document.getElementById('lichsugiaodich');
-                if (input !== null) {
-                  html2canvas(input).then(canvas => {
+                if (input !== null && typeof window !== 'undefined') {
+                  require('html2canvas')(input).then((canvas: any) => {
                     const imgData = canvas.toDataURL('image/png');
-                    const pdf = new jsPDF();
+                    const pdf = new (require('jspdf'))();
                     pdf.addImage(imgData, 'PNG', 0, 0);
                     pdf.save('lichsugiaodich.pdf');
                   });

@@ -8,8 +8,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Router from 'next/router';
 import { RectBtnContainer, RectContainer, BigButton } from '../common';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 
 const DashBoardContainer = styled(Box)`
   width: 100%;
@@ -52,11 +50,13 @@ const RutTien3: React.FC<RutTien3Props> = ({ amount, date }: RutTien3Props) => {
               variant="contained"
               color="secondary"
               onClick={() => {
-                const pdf = new jsPDF();
-                pdf.text('Hoa don', 20, 20);
-                pdf.text(`Quy khach da rut ${amount} VND`, 20, 30);
-                pdf.text(`Thoi gian giao dich ${new Date(date).toLocaleString()} VND`, 20, 40);
-                pdf.save('ruttien.pdf');
+                if (typeof window !== 'undefined') {
+                  const pdf = new (require('jspdf'))();
+                  pdf.text('Hoa don', 20, 20);
+                  pdf.text(`Quy khach da rut ${amount} VND`, 20, 30);
+                  pdf.text(`Thoi gian giao dich ${new Date(date).toLocaleString()} VND`, 20, 40);
+                  pdf.save('ruttien.pdf');
+                }
               }}
             >
               IN HOA DON
