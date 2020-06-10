@@ -7,7 +7,7 @@ import RutTien3 from '../components/DashBoard/RutTien3';
 const App: NextPage<any> = ({ query }: any) => {
   return (
     <PanelFrame>
-      <RutTien3 withdraw={query.withdraw} />
+      <RutTien3 amount={query.amount} date={query.date} />
     </PanelFrame>
   );
 };

@@ -4,6 +4,7 @@ import _ from 'lodash';
 import Router from 'next/router';
 import PanelFrame from '../components/PanelFrame';
 import RutTien from '../components/DashBoard/RutTien';
+import { login, setToken, getUserId, getUserInfo, setBudgetId } from '../src/api';
 
 const App: NextPage = () => {
   const [username, setUsername] = useState('');
@@ -145,8 +146,22 @@ const App: NextPage = () => {
             className="dialog-body"
             onSubmit={e => {
               if (typeof window !== 'undefined') {
-                window.localStorage.setItem('ISLOGIN', 'true');
-                Router.push('/');
+                login(username, password)
+                  .then(res => {
+                    if (res.data.status === 'success') {
+                      setToken(res.data.data.userId, res.data.data.token);
+                      getUserInfo(getUserId()).then(res => {
+                        setBudgetId(res.data.data.budget);
+                        Router.push('/');
+                      });
+                      return;
+                    } else {
+                      alert('Username or Password not correct, please try again');
+                    }
+                  })
+                  .catch(err => {
+                    alert('Username or Password not correct, please try again');
+                  });
               }
               e.preventDefault();
             }}

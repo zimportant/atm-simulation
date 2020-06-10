@@ -78,7 +78,7 @@ const AppBar: React.FC = () => {
                   fontWeight: 500
                 }}
               >
-                CHAO MUNG QUY KHACH SU DUNG ATM SIMULATION
+                CHAO MUNG QUY KHACH SU DUNG DICH VU ATM SIMULATION
               </Typography>
             </>
           </NotificationContent>

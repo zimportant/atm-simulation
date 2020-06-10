@@ -14,6 +14,7 @@ const DashBoardContainer = styled(Box)`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  background: #fffacd;
 `;
 
 const DashBoard: React.FC = () => {
@@ -29,10 +30,18 @@ const DashBoard: React.FC = () => {
             >
               RUT TIEN
             </BigButton>
-            <BigButton variant="contained" color="secondary">
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push('/chuyenkhoan')}
+            >
               CHUYEN KHOAN
             </BigButton>
-            <BigButton variant="contained" color="secondary">
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push('/dichvukhac')}
+            >
               DICH VU KHAC
             </BigButton>
           </Box>
@@ -54,13 +63,25 @@ const DashBoard: React.FC = () => {
         </Grid>
         <Grid container item xs={3} justify="center">
           <Box display="flex" flexDirection="column" justifyContent="space-evenly">
-            <BigButton variant="contained" color="secondary">
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push('/truyvansodu')}
+            >
               TRUY VAN SO DU
             </BigButton>
-            <BigButton variant="contained" color="secondary">
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push('/lichsugiaodich')}
+            >
               LICH SU GIAO DICH
             </BigButton>
-            <BigButton variant="contained" color="secondary">
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push('/doimapin')}
+            >
               DOI MA PIN
             </BigButton>
             <BigButton

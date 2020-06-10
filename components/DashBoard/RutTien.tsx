@@ -14,6 +14,7 @@ const DashBoardContainer = styled(Box)`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  background:background: #FFFACD;
 `;
 
 const RutTien: React.FC = () => {
@@ -69,7 +70,11 @@ const RutTien: React.FC = () => {
             >
               2.000.000 VND
             </BigButton>
-            <BigButton variant="contained" color="secondary">
+            <BigButton
+              variant="contained"
+              color="secondary"
+              onClick={() => Router.push('/nhapruttien')}
+            >
               NHAP SO TIEN
             </BigButton>
             <BigButton variant="contained" color="secondary" onClick={() => Router.push('/')}>

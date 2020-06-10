@@ -8,12 +8,14 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Router from 'next/router';
 import { RectBtnContainer, RectContainer, BigButton } from '../common';
+import { getBudgetInfo, getBudgetId, transferMoney, BANKING_BUDGET_ID } from '../../src/api';
 
 const DashBoardContainer = styled(Box)`
   width: 100%;
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  background:background: #FFFACD;
 `;
 
 interface RutTien2Props {
@@ -24,21 +26,16 @@ const RutTien2: React.FC<RutTien2Props> = ({ withdraw }: RutTien2Props) => {
   const [money, setMoney] = useState(0);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const savedMoney: string = window.localStorage.getItem('MONEY') ?? '1000000';
-      setMoney(Number(savedMoney));
+      getBudgetInfo(getBudgetId()).then(res => {
+        setMoney(res.data.data.balance);
+      });
     }
   }, []);
   return (
     <DashBoardContainer>
       <Grid container justify="center" style={{ height: '100%' }}>
         <Grid container item xs={3} justify="center">
-          <Box display="flex" flexDirection="column" justifyContent="space-evenly">
-            {money - withdraw >= 0 ? (
-              <BigButton variant="contained" color="secondary">
-                IN HOA DON
-              </BigButton>
-            ) : null}
-          </Box>
+          <Box display="flex" flexDirection="column" justifyContent="space-evenly"></Box>
         </Grid>
         <Grid container item xs={6} justify="center">
           <Box display="flex" flexDirection="column" alignItems="center" justifyContent="start">
@@ -51,7 +48,6 @@ const RutTien2: React.FC<RutTien2Props> = ({ withdraw }: RutTien2Props) => {
                 <Typography component="p">
                   {`Sau khi giao dich con lai: ${money - withdraw} VND`}
                 </Typography>
-                <Typography component="p">Quy khach co muon in hoa don?</Typography>
               </>
             ) : (
               <>
@@ -67,10 +63,20 @@ const RutTien2: React.FC<RutTien2Props> = ({ withdraw }: RutTien2Props) => {
                 variant="contained"
                 color="secondary"
                 onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    window.localStorage.setItem('MONEY', String(money - withdraw));
-                  }
-                  Router.push('/ruttien3');
+                  transferMoney(getBudgetId(), BANKING_BUDGET_ID, withdraw)
+                    .then(res => {
+                      if (res.data.data.status === 'success') {
+                        console.log(res.data.data);
+                        Router.push(
+                          `/ruttien3?amount=${res.data.data.amount}&date=${res.data.data.date}`
+                        );
+                      } else {
+                        alert('Dich vu loi, khong the thuc hien giao dich trong luc nay');
+                      }
+                    })
+                    .catch(err => {
+                      alert('Dich vu loi, khong the thuc hien giao dich trong luc nay');
+                    });
                 }}
               >
                 TIEP TUC
