@@ -59,7 +59,7 @@
     "@typescript-eslint/parser": "^2.21.0",
     "@zeit/next-css": "^1.0.1",
     "add": "^2.0.6",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.0.3",
     "bluebird": "^3.5.5",
     "cancelable-promise": "^2.5.0",
