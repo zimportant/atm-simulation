@@ -80,7 +80,7 @@
     "i18next": "^17.0.14",
     "i18next-browser-languagedetector": "^3.0.3",
     "isomorphic-unfetch": "^3.0.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "jump.js": "^1.0.2",
     "lint-staged": "^9.2.5",
     "lodash": "^4.17.15",
